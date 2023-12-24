@@ -1,27 +1,67 @@
 <div class="deck-list">
-    <igx-card elevated>
-        <!-- <igx-card-media height="180px">
-            <img [src]="card.imageUrl">
-        </igx-card-media> -->
+    <div class="flex flex-wrap justify-center flex-row list-content">
+        <div *ngIf="pagination.loading" class="basis loading-content">
+            <igx-icon class="animate-spin h-5 w-5 mr-3 loading-size" viewBox="0 0 24 24" family="material-symbols" >progress_activity</igx-icon>
+        </div>
+        
+        @for (user of deckList; track user.id) {
+            
+            <div *ngIf="!pagination.loading" class="basis card-content">
+                
+                <igx-card elevated>
+                    <igx-card-media width="200px">
+                        <div *ngIf="user.imageLoading" class="img-loading-content">
+                            <igx-icon class="animate-spin h-5 w-5 mr-3 loading-size" 
+                                viewBox="0 0 24 24" family="material-symbols" >
+                                progress_activity
+                            </igx-icon>
+                        </div>
+                        
+                        <img [hidden]="user.imageLoading" [src]="user.images.small" (load)="finishedLoadingImage($index)" >
+                    </igx-card-media>
+                    
+                    <igx-card-header>
 
-        <igx-card-header>
-            <h3 igxCardHeaderTitle>321321</h3>
-            <h5 igxCardHeaderSubtitle>321321</h5>
-        </igx-card-header>
+                        <h3 igxCardHeaderTitle>{{user.name}}</h3>
+                        <h5 igxCardHeaderSubtitle>
+                            <div *ngIf="user.evolvesFrom" >
+                                <span >Origin: </span><span>{{user.evolvesFrom}}</span>
 
-        <!-- <igx-card-content>
-            <p>{{ card.content }}</p>
-        </igx-card-content> -->
+                            </div>
+                            <!-- <div *ngIf="user.attacks">
+                                @for (attack of user.attacks; track attack.name) {
+                                    <span *ngIf="!$first">, </span><span >{{attack.name}}</span>
+                                }
+                            </div> -->
 
-        <!-- <igx-card-actions>
-            <button igxButton igxRipple *ngFor="let button of card.buttons" igxStart>{{ button }}</button>
-            <button igxButton="icon"
-                igxRipple
-                [igxRippleCentered]="true"
-                *ngFor="let icon of card.icons" igxEnd>
-                <igx-icon>{{icon}}</igx-icon>
-            </button>
-        </igx-card-actions> -->
-
-    </igx-card>
+                            <!-- <span>Card Text: </span><span>{{user.flavorText}}</span> -->
+                        </h5>
+                    </igx-card-header>
+            
+                    <!-- <igx-card-content>
+                        <p>{{ card.content }}</p>
+                    </igx-card-content> -->
+            
+                    <!-- <igx-card-actions>
+                        <button igxButton igxRipple *ngFor="let button of card.buttons" igxStart>{{ button }}</button>
+                        <button igxButton="icon"
+                            igxRipple
+                            [igxRippleCentered]="true"
+                            *ngFor="let icon of card.icons" igxEnd>
+                            <igx-icon>{{icon}}</igx-icon>
+                        </button>
+                    </igx-card-actions> -->
+            
+                </igx-card>
+            </div>
+        } @empty {
+        Empty list of decks
+        }
+    </div>
+    <igx-paginator #paginator
+            [perPage]="pagination.size"
+            [selectOptions]="[pagination.size]"
+            [totalRecords]="pagination.totalRecords"
+            (pageChange)="pageChange($event)">
+        </igx-paginator>
 </div>

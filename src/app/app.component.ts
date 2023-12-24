@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
-import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { IgxIconService } from 'igniteui-angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'pokemon-deck';
+
+  constructor(private iconService: IgxIconService) { }
+
+  ngOnInit(): void {
+    this.iconService.registerFamilyAlias('material-symbols', 'material-symbols-outlined');
+  }
+
 }

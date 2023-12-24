@@ -1,0 +1,29 @@
+@import "Color";
+
+.deck-list{
+    min-height: calc( 100vh - 90px);
+}
+.card-content{
+    padding: 8px;
+}
+.loading-content{
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loading-size {
+    --size: 56px;
+    color: $yellow;
+}
+.list-content{
+    min-height: calc(100vh - 155px);
+}
+.img-loading-content{
+    min-height: 279.17px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}

@@ -4,10 +4,15 @@ import { Weaknesses } from './weaknesses.model';
 
 export interface DeckList {
   data: Deck[];
+  count: number;
+  page: number;
+  pageSize: number;
+  totalCount: number;
 }
 
 export interface Deck {
   id: string;
+  imageLoading: boolean;
   name: string;
   supertype: string;
   subtypes: string[];
@@ -31,7 +36,7 @@ export interface Deck {
       unlimited: string;
     };
     ptcgoCode: string;
-    releaseDate: string
+    releaseDate: string;
     updatedAt: string;
     images: {
       symbol: string;
@@ -89,5 +94,6 @@ export interface Deck {
       reverseHoloAvg7: number;
       reverseHoloAvg30: number;
     };
+    
   };
 }

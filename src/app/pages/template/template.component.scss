@@ -1,3 +1,19 @@
+@use "igniteui-angular/theming" as *;
+@import "Color";
+
 :host ::ng-deep{
-    
+    .content{
+        padding: 16px;
+    }
+}
+
+$custom-navbar-theme: navbar-theme(
+    $text-color: $dark-blue,
+    $background: $yellow,
+    $idle-icon-color: #151515,
+    $hover-icon-color: $yellow
+);
+
+:host {
+    @include css-vars($custom-navbar-theme);
 }

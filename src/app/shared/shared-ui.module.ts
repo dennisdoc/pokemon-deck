@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IgxCardModule, IgxListModule } from 'igniteui-angular';
+import { IgxCardModule, IgxIconModule, IgxListModule, IgxPaginatorModule } from 'igniteui-angular';
 
 
 
@@ -8,11 +8,15 @@ import { IgxCardModule, IgxListModule } from 'igniteui-angular';
   imports: [
     CommonModule,
     IgxListModule,
-    IgxCardModule
+    IgxCardModule,
+    IgxPaginatorModule,
+    IgxIconModule
   ],
   exports: [
     IgxListModule,
-    IgxCardModule
+    IgxCardModule,
+    IgxPaginatorModule,
+    IgxIconModule
   ]
 })
 export class SharedUIModule { }

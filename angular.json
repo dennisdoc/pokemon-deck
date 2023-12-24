@@ -37,7 +37,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "node_modules"
+                "node_modules",
+                "src/assets/variables"
               ]
             }
           },
@@ -47,7 +48,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",

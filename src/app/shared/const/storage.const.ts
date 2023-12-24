@@ -1,0 +1,1 @@
+export const DECK_STORAGE = "DECK_STORAGE_PAGE_";
