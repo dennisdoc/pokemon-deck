@@ -2,17 +2,25 @@ import { Abilities } from './abilities.model';
 import { Attack } from './attacks.model';
 import { Weaknesses } from './weaknesses.model';
 
+export interface DeckUser{
+  id: string | null;
+  name: string | null;
+  cards: Card[];
+  cardMap?: any;
+}
+
 export interface DeckList {
-  data: Deck[];
+  data: Card[];
   count: number;
   page: number;
   pageSize: number;
   totalCount: number;
 }
 
-export interface Deck {
+export interface Card {
   id: string;
-  imageLoading: boolean;
+  imageLoading?: boolean;
+  index?: number;
   name: string;
   supertype: string;
   subtypes: string[];

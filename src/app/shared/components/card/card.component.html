@@ -1,0 +1,41 @@
+<igx-card [elevated]="elevated" >
+    <igx-card-media width="200px">
+        <div *ngIf="card.imageLoading" class="img-loading-content">
+            <igx-icon class="animate-spin h-5 w-5 mr-3 loading-size" 
+                viewBox="0 0 24 24" family="material-symbols" >
+                progress_activity
+            </igx-icon>
+        </div>
+        
+        <img [hidden]="card.imageLoading" [src]="card.images.small" (load)="finishedLoadingImage()" >
+    </igx-card-media>
+    
+    <!-- <igx-card-header>
+
+        <h3 igxCardHeaderTitle>{{card.name}}</h3>
+        <h5 igxCardHeaderSubtitle>
+            <div *ngIf="card.evolvesFrom" >
+                <span >Origin: </span><span>{{card.evolvesFrom}}</span>
+
+            </div>
+        </h5>
+    </igx-card-header> -->
+
+    <!-- <igx-card-content>
+        <p>{{ card.content }}</p>
+    </igx-card-content> -->
+
+    <igx-card-actions *ngIf="!hideActions" >
+        <button (click)="addToDeck()" igxButton igxRipple >
+            Add to Deck
+        </button>
+        <!-- <button igxButton igxRipple *ngFor="let button of card.buttons" igxStart>{{ button }}</button> -->
+        <!-- <button igxButton="icon"
+            igxRipple
+            [igxRippleCentered]="true"
+            *ngFor="let icon of card.icons" igxEnd>
+            <igx-icon>{{icon}}</igx-icon>
+        </button> -->
+    </igx-card-actions>
+
+</igx-card>

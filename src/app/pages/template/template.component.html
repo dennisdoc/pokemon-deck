@@ -3,13 +3,80 @@
 </div> -->
 <article class="sample-column">
     <div class="navbar-sample">
-        <igx-navbar title="Pokemon" >
-            <button igxIconButton="flat">
+        <igx-navbar actionButtonIcon="arrow_back" [isActionButtonVisible]="canGoBack()"
+        (action)="navigateBack()" >
+            <div igxNavbarTitle>
+                <h1 class="igx-navbar__title" id="igx-navbar-title-1"> 
+                    <span class="pokemon-font header-title" >Pokemon </span>
+                    <div *ngIf="deck" class="edit-deck-content" >
+                        <button (click)="togglePeek()" class="btn inverted" igxButton="flat" igxRipple="white" [igxRippleCentered]="true" >
+                            <igx-icon family="material">density_small</igx-icon>
+                            <span>Show Deck</span>
+                        </button>
+                        <form>
+                            <igx-input-group>
+                                <input igxInput name="fullName" [(ngModel)]="deck.name" (ngModelChange)="deckNameChange($event)" name="name" type="text" />
+                                <label igxLabel for="fullName">Deck Name</label>
+                            </igx-input-group>
+                        </form>
+                    </div>
+                    <button igxIconButton="flat">
+                        <igx-icon [style.color]="'white'" >person</igx-icon>
+                    </button>
+                </h1>
+                
+            </div>
+            <!-- <button igxIconButton="flat">
                 <igx-icon [style.color]="'white'" >person</igx-icon>
-            </button>
+            </button> -->
         </igx-navbar>
     </div>
 </article>
+<div class="background-content">
+    
+</div>
 <div class="content">
     <router-outlet></router-outlet>
 </div>
+
+<div>
+    <igx-snackbar #snackbar>
+    </igx-snackbar>
+</div>
+
+<igx-dialog #modal (closed)="peakDeckAction = false" [isOpen]="peakDeckAction" [closeOnOutsideSelect]="true">
+    <igx-dialog-title>
+        <div class="deck-name" >
+            <h1>{{deck?.name}}</h1>
+            <button (click)="peakDeckAction = false" igxIconButton="flat">
+                <igx-icon class="close_icon" >close</igx-icon>
+            </button>
+        </div>
+    </igx-dialog-title>
+    <div class="deck-content">
+        <div class="flex flex-wrap justify-center flex-row list-content">
+            @for (card of deck?.cards; track card.id) {
+                <div class="basis card-content">
+                    <deck-card [card]="card" [hide-actions]="true" ></deck-card>
+                </div>
+            }
+        </div>
+    </div>
+</igx-dialog>
+<!-- <igx-nav-drawer *ngIf="peakDeckAction" id="navigation" #drawer [isOpen]="peakDeckAction" [pinThreshold]="5000">
+    <ng-template igxDrawer>
+      <nav>
+        
+        <div class="deck-content">
+            <div class="deck-name" >
+                <h1>{{deck?.name}}</h1>
+            </div>
+            @for (card of deck?.cards; track card.id) {
+                <div>
+                    <deck-card [card]="card" [hide-actions]="true" ></deck-card>
+                </div>
+            }
+        </div>
+      </nav>
+    </ng-template>
+  </igx-nav-drawer> -->

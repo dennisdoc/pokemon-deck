@@ -1,0 +1,8 @@
+.igx-card-header__title{
+    text-align: center;
+}
+:host ::ng-deep{
+    igx-list,igx-list-item{
+        background: transparent;
+    }
+}

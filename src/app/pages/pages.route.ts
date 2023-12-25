@@ -9,4 +9,8 @@ export const pagesRoutes: Routes = [
     import('./deck-form/deck-form-routing.module').then(
       ({ DeckFormRoutingModule }) => DeckFormRoutingModule
     )},
+    {path: 'edit/:id',loadChildren: () =>
+    import('./deck-form/deck-form-routing.module').then(
+      ({ DeckFormRoutingModule }) => DeckFormRoutingModule
+    )},
 ];

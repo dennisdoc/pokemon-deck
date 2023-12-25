@@ -16,3 +16,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'Color';
+
+@font-face {
+    font-family: "Pokemon";
+    src: url("assets/fonts/Pokemon\ Solid.ttf") format("truetype");
+}
+.pokemon-font{
+    font-family: Pokemon;
+}
+
+.igx-button--flat{
+    color: $yellow-shadow ;
+}
+
+.igx-button--flat:active,.igx-button--flat:focus,.igx-button--fab:focus,.igx-button--fab:active{
+    background: $light-blue;
+    color: $yellow-shadow;
+    border-color: $light-blue;
+}
+.igx-button--flat.inverted:active,.igx-button--flat.inverted:focus,.igx-button--fab.inverted:focus,.igx-button--fab.inverted:active{
+    background: $yellow;
+    color: $dark-blue;
+    border-color: $yellow;
+}
+.igx-button--flat.inverted:hover,.igx-button--fab.inverted:hover {
+    background: $dark-yellow;
+    color: $light-blue;
+    border-color: $dark-yellow;
+}
+.igx-button--flat:hover,.igx-button--fab:hover {
+    background: $dark-blue;
+    color: $yellow;
+    border-color: $dark-blue;
+}

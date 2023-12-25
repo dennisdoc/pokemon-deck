@@ -5,17 +5,34 @@ import { TemplateComponent } from './template.component';
 import { RouterModule } from '@angular/router';
 import { 
 	IgxIconModule,
-	IgxNavbarModule
+	IgxNavbarModule,
+  IgxNavigationDrawerModule,
+  IgxSnackbarModule,
+  IgxInputGroupModule, 
+  IgxButtonModule,
+  IgxRippleModule,
+  IgxDialogModule
  } from "igniteui-angular";
+import { FormsModule } from '@angular/forms';
+import { SharedComponentsModule } from '../../shared/components/shared-components.module';
+
 
 
 @NgModule({
   declarations: [TemplateComponent],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     IgxIconModule,
-    IgxNavbarModule
+    IgxButtonModule,
+    IgxRippleModule,
+    IgxNavbarModule,
+    IgxSnackbarModule,
+    IgxInputGroupModule,
+    SharedComponentsModule,
+    IgxNavigationDrawerModule,
+    IgxDialogModule
   ],
 })
 export class TemplateModule { }

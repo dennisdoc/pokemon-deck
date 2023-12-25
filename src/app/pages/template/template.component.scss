@@ -4,6 +4,46 @@
 :host ::ng-deep{
     .content{
         padding: 16px;
+        
+        margin: 0px;
+    }
+    .header-title{
+        margin-top: -11px;
+    }
+    .background-content{
+        background: url('/assets/image/background.jpg');
+        background-size: cover;
+        height: calc(100vh - 56px);
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+    h1.igx-navbar__title{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px;
+    }
+    .edit-deck-content{
+        display: flex;
+        margin-right: 140px;
+    }
+    .igx-nav-drawer__aside{
+        background-color: $dark-blue;
+        color: white;
+        text-align: center;
+        h1{
+            font-size: 17px;
+            color: white;
+        }
+    }
+    .deck-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
     }
 }
 
@@ -16,4 +56,7 @@ $custom-navbar-theme: navbar-theme(
 
 :host {
     @include css-vars($custom-navbar-theme);
+}
+.card-content{
+    padding: 8px;
 }
