@@ -7,11 +7,15 @@
         
         margin: 0px;
     }
+    .list-content{
+        height: calc( 100vh - 100px);
+        overflow: auto;
+    }
     .header-title{
         margin-top: -11px;
     }
     .background-content{
-        background: url('/assets/image/background.jpg');
+        // background: url('/assets/image/background.jpg');
         background-size: cover;
         height: calc(100vh - 56px);
         position: absolute;

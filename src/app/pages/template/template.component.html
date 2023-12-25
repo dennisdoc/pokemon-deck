@@ -54,7 +54,7 @@
         </div>
     </igx-dialog-title>
     <div class="deck-content">
-        <div class="flex flex-wrap justify-center flex-row list-content">
+        <div [style.height]="'calc( 100vh - 100px)'" class="flex flex-wrap justify-center flex-row list-content overflow-auto">
             @for (card of deck?.cards; track card.id) {
                 <div class="basis card-content">
                     <deck-card [card]="card" [hide-actions]="true" ></deck-card>
