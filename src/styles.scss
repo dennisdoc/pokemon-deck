@@ -22,6 +22,9 @@
     font-family: "Pokemon";
     src: url("assets/fonts/Pokemon\ Solid.ttf") format("truetype");
 }
+body{
+    overflow: hidden;
+}
 .background-content{
     background: url('assets/image/background.jpg');
 }
@@ -44,10 +47,14 @@
     overflow-x: auto;
     width: calc(150vh);
     max-width: 1090px;
+    min-height: 315px;
     // max-width: 100vh;
     // display: flex;
     // flex-direction: row;
     // flex-wrap: nowrap;
+}
+.btn-save-deck{
+    margin-left: 8px;
 }
 .modal-deck-name{
     display: flex;
@@ -69,7 +76,7 @@
 
 .igx-button--flat:active,.igx-button--flat:focus,.igx-button--fab:focus,.igx-button--fab:active{
     background: $light-blue;
-    color: $yellow-shadow;
+    color: $yellow;
     border-color: $light-blue;
 }
 .igx-button--flat.inverted:active,.igx-button--flat.inverted:focus,.igx-button--fab.inverted:focus,.igx-button--fab.inverted:active{

@@ -2,7 +2,7 @@ import { Abilities } from './abilities.model';
 import { Attack } from './attacks.model';
 import { Weaknesses } from './weaknesses.model';
 
-export interface DeckUser{
+export class DeckUser{
   id: string | null;
   name: string | null;
   cards: Card[];
@@ -10,6 +10,13 @@ export interface DeckUser{
   trainerCards?: Card[];
   energyCards?: Card[];
   cardMap?: any;
+  coreCount?: number;
+  constructor(){
+    this.id = null;
+    this.name = null;
+    this.cards = [];
+    this.cardMap= {};
+  }
 }
 
 export interface DeckList {

@@ -16,13 +16,14 @@
                 </deck-card>
             </div>
         } @empty {
-            <span *ngIf="!pagination.loading" >
+            <span *ngIf="!pagination.loading" class="pokemon-font header-title yellow text-shadow" >
                 Empty list of decks
             </span>
             
         }
     </div>
     <igx-paginator #paginator
+        [page]="pagination.page"
         [perPage]="pagination.size"
         [selectOptions]="[pagination.size]"
         [totalRecords]="pagination.totalRecords"

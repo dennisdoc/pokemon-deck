@@ -16,3 +16,12 @@ $text-200:#e0e0e0;
 $bg-100:#2A75BB;
 $bg-200:#4487cf;
 $bg-300:#67a3ee;
+
+.yellow{
+    color: $yellow;
+    font-weight: 100;
+    &.text-shadow{
+        text-shadow: 2px 0 $light-blue, -2px 0 $light-blue, 0 2px $light-blue, 0 -2px $light-blue,
+                1px 1px $light-blue, -1px -1px $light-blue, 1px -1px $light-blue, -1px 1px $light-blue;
+    }
+}

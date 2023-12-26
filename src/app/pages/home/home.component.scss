@@ -4,11 +4,21 @@
     text-align: center;
 }
 :host ::ng-deep{
+    .deck-main-content{
+        overflow-x: auto;
+        display: flex;
+        height: calc(100vh - 76px);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: center;
+    }
     igx-list,igx-list-item{
         background: transparent;
     }
     .card-back-background{
-        position: absolute;
+        position: relative;
+        margin-right: 8px;
         height: 340px;
         width: 340px;
         background-size: cover;

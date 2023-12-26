@@ -1,42 +1,21 @@
-
-<igx-list>
-    <igx-list-item isHeader="true">
-        <div class="flex flex-row">
-            <div class="basis-1/4">
-                <div class="button-sample">
-                    <button igxButton="outlined" (click)="addDeck()"  igxRipple>Adicionar Baralho</button>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-row">
-            @for (deck of deckList; track deck.id) {
-                <div class="basis-1/4">
-                    
-                    <igx-card class="card-content-size" [elevated]="true" >
-                        <div class="card-back-background card-content-size"></div>
-                        <igx-card-header>
-                            <h3 class="title-background" igxCardHeaderTitle>
-                                {{deck.name}}
-                            </h3>
-                        </igx-card-header>
-                        <igx-card-actions class="actions-background" >
-                            <button (click)="showDeck(deck)" igxButton igxRipple >
-                                Show Deck
-                            </button>
-                            <button (click)="editDeck(deck)" igxButton igxRipple >
-                                Edit Deck
-                            </button>
-                            <button (click)="removeDeck(deck,$index)" igxButton igxRipple >
-                                <igx-icon family="material">delete</igx-icon>
-                            </button>
-                        </igx-card-actions>
-                    </igx-card> 
-                </div>
-            }
-        </div>
-        
-    </igx-list-item>
-    <!-- <igx-list-item>Item 1</igx-list-item>
-    <igx-list-item>Item 2</igx-list-item>
-    <igx-list-item>Item 3</igx-list-item> -->
-</igx-list>
+<div class="flex flex-row deck-main-content">
+  @for (deck of deckList; track deck.id) {
+  <!-- <div class="basis-2/4"> -->
+    <igx-card class="card-content-size card-back-background" [elevated]="true">
+      <!-- <div class="card-back-background card-content-size"></div> -->
+      <igx-card-header>
+        <h3 class="title-background" igxCardHeaderTitle>
+          {{ deck.name }}
+        </h3>
+      </igx-card-header>
+      <igx-card-actions class="actions-background">
+        <button (click)="showDeck(deck)" igxButton igxRipple>Show Deck</button>
+        <button (click)="editDeck(deck)" igxButton igxRipple>Edit Deck</button>
+        <button (click)="removeDeck(deck, $index)" igxButton igxRipple>
+          <igx-icon family="material">delete</igx-icon>
+        </button>
+      </igx-card-actions>
+    </igx-card>
+  <!-- </div> -->
+  }
+</div>

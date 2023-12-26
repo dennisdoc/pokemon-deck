@@ -26,8 +26,11 @@
     </igx-card-content> -->
 
     <igx-card-actions *ngIf="!hideActions" >
-        <button (click)="addToDeck()" igxButton igxRipple >
+        <button *ngIf="addOption" (click)="addToDeck()" igxButton igxRipple >
             Add to Deck
+        </button>
+        <button *ngIf="deleteOption" (click)="removeCard()" igxButton igxRipple>
+            <igx-icon family="material">delete</igx-icon>
         </button>
         <!-- <button igxButton igxRipple *ngFor="let button of card.buttons" igxStart>{{ button }}</button> -->
         <!-- <button igxButton="icon"

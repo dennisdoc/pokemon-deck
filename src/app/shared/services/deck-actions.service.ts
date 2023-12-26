@@ -14,12 +14,12 @@ export class DeckActionsService {
 
   constructor(private storage: StorageService) { }
 
-  changeDeck(deck: DeckUser): void {
+  changeDeck(deck: DeckUser, save = false): void {
     if(!deck){
       this.deckList.next(null);
       return ;
     }
-    if(!this.storage.getItem(DECK_LIST_SAVED)){
+    if(!this.storage.getItem(DECK_LIST_SAVED) && save){
       deck.id = uuid.v4();
       this.storage.setItem(DECK_LIST_SAVED,JSON.stringify([deck]));
     }else{
@@ -27,7 +27,7 @@ export class DeckActionsService {
       if(!deck.id){
         deck.id = uuid.v4();
         deckList.push(deck);
-        this.storage.setItem(DECK_LIST_SAVED,JSON.stringify(deckList));
+        if(save) this.storage.setItem(DECK_LIST_SAVED,JSON.stringify(deckList));
         return ;
       }
       const index = deckList.findIndex(deckItem=>(deckItem.id === deck.id));
@@ -36,7 +36,7 @@ export class DeckActionsService {
       }else{
         deckList.push(deck);
       }
-      this.storage.setItem(DECK_LIST_SAVED,JSON.stringify(deckList));
+      if(save) this.storage.setItem(DECK_LIST_SAVED,JSON.stringify(deckList));
     }
     this.deckList.next(deck);
   }

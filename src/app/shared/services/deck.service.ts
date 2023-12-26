@@ -4,6 +4,7 @@ import { Observable, finalize, tap } from 'rxjs';
 import { DeckList, DeckUser } from '../model/deck.model';
 import { DECK_LIST_SAVED, DECK_STORAGE } from '../const/storage.const';
 import { StorageService } from './storage.service';
+import { SearchActionObj } from '../model/search.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class DeckService {
     ) { }
 
 
-  getAllCards(page = 0, pageSize = 18): Observable<DeckList>{
+  getAllCards(page = 0, pageSize = 18, search: SearchActionObj | null = null): Observable<DeckList>{
     const storage = localStorage.getItem(DECK_STORAGE+`${page}_${pageSize}`);
-    if(storage){
+    if(storage && !search){
       const data = JSON.parse(storage);
       if(data.lastFetch === new Date().toDateString()){
         return new Observable((obs=>{
@@ -29,8 +30,15 @@ export class DeckService {
       }
       
     }
+
+    let params: any = {page:page+1,pageSize:pageSize};
+
+    if(search){
+      params.q = `name:*${search.name}*`;
+    }
     
-    return this.http.get<DeckList>(this.baseAPI,{params:{page:page+1,pageSize:pageSize}}).pipe(tap((data)=>{
+    return this.http.get<DeckList>(this.baseAPI,{params:params}).pipe(tap((data)=>{
+      if(search) return ;
       localStorage.setItem(DECK_STORAGE+`${page}_${pageSize}`,JSON.stringify({lastFetch: new Date().toDateString(),data:data}));
     }))
   }

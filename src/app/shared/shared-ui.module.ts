@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IgxCardModule, IgxIconModule, IgxListModule, IgxPaginatorModule, IgxButtonModule,
 	IgxRippleModule,
-	IgxSnackbarModule } from 'igniteui-angular';
+	IgxSnackbarModule, 
+  IgxDialogModule} from 'igniteui-angular';
 
 
 
@@ -15,7 +16,8 @@ import { IgxCardModule, IgxIconModule, IgxListModule, IgxPaginatorModule, IgxBut
     IgxIconModule,
     IgxButtonModule,
     IgxRippleModule,
-    IgxSnackbarModule
+    IgxSnackbarModule,
+    IgxDialogModule
   ],
   exports: [
     IgxListModule,
@@ -24,7 +26,8 @@ import { IgxCardModule, IgxIconModule, IgxListModule, IgxPaginatorModule, IgxBut
     IgxIconModule,
     IgxButtonModule,
     IgxRippleModule,
-    IgxSnackbarModule
+    IgxSnackbarModule,
+    IgxDialogModule
   ]
 })
 export class SharedUIModule { }

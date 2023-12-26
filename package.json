@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --base-href ./ && electron .",
+    "start": "ng build --base-href ./ && electron . --icon=src/assets/image/logo.png",
     "build": "ng build",
     "serve": "ng serve",
     "watch": "ng build --watch --configuration development",

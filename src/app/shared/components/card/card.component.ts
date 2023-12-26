@@ -10,8 +10,11 @@ export class CardComponent implements OnInit{
   @Input() card!: Card;
   @Input() elevated = false;
   @Input('hide-actions') hideActions = false;
+  @Input('add-option') addOption = true;
+  @Input('delete-option') deleteOption = false;
   @Output('image-loading') imageLoading = new EventEmitter<Card | null>();
   @Output('add-deck') addDeckAction = new EventEmitter<Card | null>();
+  @Output('remove-deck') removeDeckAction = new EventEmitter<Card | null>();
 
   ngOnInit(): void {
     
@@ -23,6 +26,10 @@ export class CardComponent implements OnInit{
 
   addToDeck(): void {
     this.addDeckAction.emit(this.card);
+  }
+
+  removeCard(): void {
+    this.removeDeckAction.emit(this.card);
   }
 
 }

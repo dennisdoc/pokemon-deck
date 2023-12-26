@@ -12,6 +12,7 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
         .pokemon-logo{
             height: 56px;
         }
@@ -55,6 +56,37 @@
         align-items: center;
         flex-wrap: wrap;
         flex-direction: column;
+    }
+    .igx-button--outlined{
+        color: $yellow;
+        border-color: $yellow;
+        &:hover{
+            background-color: $primary-200;
+            color: $dark-blue;
+        }
+    }
+    .yellow-input-group{
+        &.igx-input-group--focused{
+            .igx-input-group__bundle::after{
+                border-color: $yellow;
+                color: $yellow;
+            }
+            .igx-input-group__line{
+                background: $yellow-shadow;
+            }
+        }
+        .igx-input-group__label{
+            color: $yellow;
+        }
+        .igx-input-group__bundle{
+            border-color: $yellow;
+        }
+        .igx-input-group__bundle::after{
+            border-color: $yellow;
+        }
+        .igx-input-group__input, .igx-input-group__textarea{
+            color: $yellow;
+        }
     }
 }
 
