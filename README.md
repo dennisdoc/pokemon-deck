@@ -58,6 +58,7 @@ npm run serve
 * [ ] Responsive improvements
 * [ ] Better UI
 * [ ] Better Images
+* [ ] Add Animations :hover :focus etc..
 
 -------Angular Generated Readme -----------------
 
