@@ -1,14 +1,3 @@
-<h4> <span> · </span> <a href="https://github.com/dennisdoc/pokemon-deck/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/dennisdoc/pokemon-deck/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/dennisdoc/pokemon-deck/issues"> Request Feature </a> </h4>
-
-
-# :notebook_with_decorative_cover: Table of Contents
-
-- [About the Project](#star2-about-the-project)
-- [Roadmap](#compass-roadmap)
-
-
-## :star2: About the Project
-
 ### :art: Color Reference
 | Color | Hex |
 | --------------- | ---------------------------------------------------------------- |
