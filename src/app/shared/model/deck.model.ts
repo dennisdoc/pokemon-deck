@@ -6,6 +6,9 @@ export interface DeckUser{
   id: string | null;
   name: string | null;
   cards: Card[];
+  pokemonCards?: Card[];
+  trainerCards?: Card[];
+  energyCards?: Card[];
   cardMap?: any;
 }
 

@@ -11,13 +11,15 @@
         <div class="flex flex-row">
             @for (deck of deckList; track deck.id) {
                 <div class="basis-1/4">
-                    <igx-card [elevated]="true" >
+                    
+                    <igx-card class="card-content-size" [elevated]="true" >
+                        <div class="card-back-background card-content-size"></div>
                         <igx-card-header>
-                            <h3 igxCardHeaderTitle>
+                            <h3 class="title-background" igxCardHeaderTitle>
                                 {{deck.name}}
                             </h3>
                         </igx-card-header>
-                        <igx-card-actions>
+                        <igx-card-actions class="actions-background" >
                             <button (click)="showDeck(deck)" igxButton igxRipple >
                                 Show Deck
                             </button>

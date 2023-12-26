@@ -11,7 +11,8 @@ import {
   IgxInputGroupModule, 
   IgxButtonModule,
   IgxRippleModule,
-  IgxDialogModule
+  IgxDialogModule,
+  IgxTabsModule
  } from "igniteui-angular";
 import { FormsModule } from '@angular/forms';
 import { SharedComponentsModule } from '../../shared/components/shared-components.module';
@@ -32,7 +33,8 @@ import { SharedComponentsModule } from '../../shared/components/shared-component
     IgxInputGroupModule,
     SharedComponentsModule,
     IgxNavigationDrawerModule,
-    IgxDialogModule
+    IgxDialogModule,
+    IgxTabsModule
   ],
 })
 export class TemplateModule { }

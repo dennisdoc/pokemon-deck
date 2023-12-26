@@ -1,8 +1,31 @@
+@import 'Color';
+
 .igx-card-header__title{
     text-align: center;
 }
 :host ::ng-deep{
     igx-list,igx-list-item{
         background: transparent;
+    }
+    .card-back-background{
+        position: absolute;
+        height: 340px;
+        width: 340px;
+        background-size: cover;
+        z-index: 0;
+        // background-color: $light-blue;
+        // background-position: center;
+        // background-blend-mode: multiply;
+        // color: #fff;
+    }
+    .card-content-size{
+        min-height: 474px;
+        min-width: 340px;
+        border-radius: 20px;
+        border: 0px;
+    }
+    .actions-background,.title-background{
+        backdrop-filter: blur(8px) brightness(80%);
+        color: $primary-200;
     }
 }

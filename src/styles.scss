@@ -25,6 +25,40 @@
 .background-content{
     background: url('assets/image/background.jpg');
 }
+.card-back-background{
+    background: url('assets/image/pokemon_cover.png');
+}
+.deck-content{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    min-width: 1090px;
+}
+.deck-title-modal{
+    font-family: 'Pokemon' !important;
+    color: $dark-blue;
+    font-weight: 100 !important; 
+}
+.pokemon-detail-list-content{
+    display: flex;
+    overflow-x: auto;
+    width: calc(150vh);
+    max-width: 1090px;
+    // max-width: 100vh;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: nowrap;
+}
+.modal-deck-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    width: 100%;
+    h4{
+        margin: 0px;
+    }
+}
 .pokemon-font{
     font-family: Pokemon;
 }

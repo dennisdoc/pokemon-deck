@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit{
     ){}
 
   ngOnInit(): void {
-    this.deckList = this.deckService.getDecksSaved();
+    this.deckList = this.deckService.getDecksSaved().filter(item=>(item.name));
   }
 
   addDeck(): void {

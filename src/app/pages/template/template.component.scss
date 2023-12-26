@@ -7,12 +7,19 @@
         
         margin: 0px;
     }
-    .list-content{
-        height: calc( 100vh - 100px);
-        overflow: auto;
-    }
-    .header-title{
-        margin-top: -11px;
+    .logo-content{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        .pokemon-logo{
+            height: 56px;
+        }
+        .header-title{
+            margin-top: -11px;
+            margin-left: 8px;
+            font-weight: 100;
+        }
     }
     .background-content{
         // background: url('/assets/image/background.jpg');
@@ -52,10 +59,10 @@
 }
 
 $custom-navbar-theme: navbar-theme(
-    $text-color: $dark-blue,
-    $background: $yellow,
+    $text-color: $yellow,
+    $background: $dark-blue,
     $idle-icon-color: #151515,
-    $hover-icon-color: $yellow
+    $hover-icon-color: $dark-blue
 );
 
 :host {

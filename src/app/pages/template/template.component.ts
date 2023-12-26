@@ -36,7 +36,12 @@ export class TemplateComponent implements OnInit{
     )
     this.deckActionService.listenToDeck().subscribe(
       (deck)=>{
+        if(!deck) return ;
+        deck.pokemonCards = deck.cards?.filter(card=>(card.supertype==="Pokémon"));
+        deck.trainerCards = deck.cards?.filter(card=>(card.supertype==="Trainer"));
+        deck.energyCards = deck.cards?.filter(card=>(card.supertype==="Pokémon"));
         this.deck = deck;
+        console.info('this.deck',this.deck);
       }
     )
     this.deckActionService.listenToPeek().subscribe(

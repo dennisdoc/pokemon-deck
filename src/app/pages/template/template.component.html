@@ -7,7 +7,12 @@
         (action)="navigateBack()" >
             <div igxNavbarTitle>
                 <h1 class="igx-navbar__title" id="igx-navbar-title-1"> 
-                    <span class="pokemon-font header-title" >Pokemon </span>
+                    <div class="logo-content" >
+                        <img class="pokemon-logo" src="assets/image/logo.png" />
+                        <span class="pokemon-font header-title" >Your Decks </span>
+                    </div>
+                    
+                    
                     <div *ngIf="deck" class="edit-deck-content" >
                         <button (click)="togglePeek()" class="btn inverted" igxButton="flat" igxRipple="white" [igxRippleCentered]="true" >
                             <igx-icon family="material">density_small</igx-icon>
@@ -44,23 +49,58 @@
     </igx-snackbar>
 </div>
 
-<igx-dialog #modal (closed)="peakDeckAction = false" [isOpen]="peakDeckAction" [closeOnOutsideSelect]="true">
+<igx-dialog #modal (closed)="peakDeckAction = false" [isOpen]="peakDeckAction" class="deck-modal" [closeOnOutsideSelect]="true">
     <igx-dialog-title>
-        <div class="deck-name" >
-            <h1>{{deck?.name}}</h1>
+        <div class="modal-deck-name" >
+            <h4 class="deck-title-modal" >{{deck?.name}}</h4>
             <button (click)="peakDeckAction = false" igxIconButton="flat">
                 <igx-icon class="close_icon" >close</igx-icon>
             </button>
         </div>
     </igx-dialog-title>
     <div class="deck-content">
-        <div [style.height]="'calc( 100vh - 100px)'" class="flex flex-wrap justify-center flex-row list-content overflow-auto">
-            @for (card of deck?.cards; track card.id) {
-                <div class="basis card-content">
-                    <deck-card [card]="card" [hide-actions]="true" ></deck-card>
-                </div>
-            }
-        </div>
+        <igx-tabs>
+            <igx-tab-item>
+                <igx-tab-header>
+                    <!-- <igx-icon family="material">delete</igx-icon> -->
+                    <span igxTabHeaderLabel>{{deck?.pokemonCards?.length}} Pokemons Cards</span>
+                </igx-tab-header>
+                <igx-tab-content class="pokemon-detail-list-content" >
+                    @for (card of deck?.pokemonCards; track card.id) {
+                        <div class="card-content">
+                            <deck-card [card]="card" [hide-actions]="true" ></deck-card>
+                        </div>
+                    }
+                </igx-tab-content>
+            </igx-tab-item>
+            <igx-tab-item>
+                <igx-tab-header>
+                    <!-- <igx-icon family="material">delete</igx-icon> -->
+                    <span igxTabHeaderLabel>{{deck?.trainerCards?.length}} Trainer Cards</span>
+                </igx-tab-header>
+                <igx-tab-content class="pokemon-detail-list-content" >
+                    @for (card of deck?.trainerCards; track card.id) {
+                        <div class="card-content">
+                            <deck-card [card]="card" [hide-actions]="true" ></deck-card>
+                        </div>
+                    }
+                </igx-tab-content>
+            </igx-tab-item>
+            <igx-tab-item>
+                <igx-tab-header>
+                    <!-- <igx-icon family="material">delete</igx-icon> -->
+                    <span igxTabHeaderLabel>{{deck?.energyCards?.length}} Energy Cards</span>
+                </igx-tab-header>
+                <igx-tab-content class="pokemon-detail-list-content" >
+                    @for (card of deck?.energyCards; track card.id) {
+                        <div class="card-content">
+                            <deck-card [card]="card" [hide-actions]="true" ></deck-card>
+                        </div>
+                    }
+                </igx-tab-content>
+            </igx-tab-item>
+        </igx-tabs>
+       
     </div>
 </igx-dialog>
 <!-- <igx-nav-drawer *ngIf="peakDeckAction" id="navigation" #drawer [isOpen]="peakDeckAction" [pinThreshold]="5000">
