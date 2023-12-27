@@ -23,9 +23,13 @@ export class DeckActionsService {
       deck.id = uuid.v4();
       this.storage.setItem(DECK_LIST_SAVED,JSON.stringify([deck]));
     }else{
-      const deckList: Array<DeckUser> = this.storage.getItem(DECK_LIST_SAVED);
+      let deckList: Array<DeckUser> = this.storage.getItem(DECK_LIST_SAVED);
+      if(!deckList){
+        deckList = [];
+      }
       if(!deck.id){
         deck.id = uuid.v4();
+        
         deckList.push(deck);
         if(save) this.storage.setItem(DECK_LIST_SAVED,JSON.stringify(deckList));
         return ;
