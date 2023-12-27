@@ -2,14 +2,18 @@
   "name": "pokemon-deck",
   "version": "0.0.0",
   "main": "app.js",
+  "author": {
+    "name": "Dennis Oliveira"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng build --base-href ./ && electron . --icon=src/assets/image/logo.png",
-    "build": "ng build",
+    "build": "ng build --base-href ./ ",
     "serve": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prerelease": "npm run build -- --prod",
+    "build-prod": "electron-packager ./ PokemonDeck --platform=win32 --arch=x64",
+    "prerelease": "npm run build",
     "release": "electron-builder"
   },
   "private": true,
@@ -49,6 +53,7 @@
     "autoprefixer": "^10.4.16",
     "electron": "^28.1.0",
     "electron-builder": "^24.9.1",
+    "electron-packager": "^17.1.2",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
