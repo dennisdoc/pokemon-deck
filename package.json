@@ -19,6 +19,7 @@
     "build-prod": "electron-packager ./ PokemonDeck --platform=win32 --arch=x64 --overwrite",
     "prerelease": "npm run build",
     "release": "electron-builder",
+    "preforge-release": "npm run build-optmized",
     "forge-release":"electron-forge make"
   },
   "private": true,
