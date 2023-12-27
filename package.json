@@ -2,19 +2,24 @@
   "name": "pokemon-deck",
   "version": "0.0.0",
   "main": "app.js",
+  "description": "Pokemon card selector native os",
   "author": {
-    "name": "Dennis Oliveira"
+    "name": "Dennis Oliveira",
+    "description":""
   },
   "scripts": {
     "ng": "ng",
     "start": "ng build --base-href ./ && electron . --icon=src/assets/image/logo.png",
     "build": "ng build --base-href ./ ",
+    "build-optmized": "ng build --base-href ./ --optimization --aot",
     "serve": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-prod": "electron-packager ./ PokemonDeck --platform=win32 --arch=x64",
+    "prebuild-prod": "npm run build-optmized",
+    "build-prod": "electron-packager ./ PokemonDeck --platform=win32 --arch=x64 --overwrite",
     "prerelease": "npm run build",
-    "release": "electron-builder"
+    "release": "electron-builder",
+    "forge-release":"electron-forge make"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +51,12 @@
     "@angular-devkit/build-angular": "^17.0.6",
     "@angular/cli": "^17.0.6",
     "@angular/compiler-cli": "^17.0.0",
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-deb": "^7.2.0",
+    "@electron-forge/maker-rpm": "^7.2.0",
+    "@electron-forge/maker-squirrel": "^7.2.0",
+    "@electron-forge/maker-zip": "^7.2.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "@types/hammerjs": "^2.0.40",
     "@types/jasmine": "~5.1.0",
     "@types/lodash": "^4.14.202",
@@ -63,5 +74,13 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
     "typescript": "~5.2.2"
-  }
+  },
+  "files": [
+    "./dist/**/*",
+    "./public/electron.js",
+    "*.js",
+    "*.html",
+    "build",
+    "node_modules"
+  ]
 }
