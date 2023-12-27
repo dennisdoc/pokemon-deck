@@ -1,3 +1,14 @@
+Tech Stack
+
+
+Angular
+Electron
+Tailwind
+infragistics
+electron-forge
+scss
+
+
 ### :art: Color Reference
 | Color | Hex |
 | --------------- | ---------------------------------------------------------------- |

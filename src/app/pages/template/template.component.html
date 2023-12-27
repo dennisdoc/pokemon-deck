@@ -2,141 +2,199 @@
     <p>template works!</p>
 </div> -->
 <article class="sample-column">
-    <div class="navbar-sample">
-        <igx-navbar actionButtonIcon="arrow_back" [isActionButtonVisible]="canGoBack()"
-        (action)="navigateBack()" >
-            <div igxNavbarTitle>
-                <h1 class="igx-navbar__title" id="igx-navbar-title-1"> 
-                    <div [routerLink]="['/deck']" class="logo-content" >
-                        <img class="pokemon-logo" src="assets/image/logo.png" />
-                        <span class="pokemon-font header-title" >Your Decks </span>
-                    </div>
-                    
-                    
-                    <div class="edit-deck-content" >
-                        <div *ngIf="!isFormPage" class="flex flex-row">
-                            <div class="basis-1/4">
-                                <div class="button-sample">
-                                    <button igxButton="outlined" (click)="addDeck()"  igxRipple>Add new Deck</button>
-                                </div>
-                            </div>
-                        </div>
-                        <button *ngIf="deck && isFormPage" (click)="togglePeek()" class="btn inverted" igxButton="flat" igxRipple="white" [igxRippleCentered]="true" >
-                            <igx-icon family="material">density_small</igx-icon>
-                            <span>Show Deck</span>
-                        </button>
-                        <form *ngIf="deck && isFormPage" class="flex" >
-                            <igx-input-group class="yellow-input-group" >
-                                <input igxInput name="fullName" [(ngModel)]="search.name" (ngModelChange)="searchChange($event,'name')" name="nameSearch" type="text" />
-                                <label igxLabel for="fullName">Search Card Name</label>
-                            </igx-input-group>
-                            <igx-input-group class="yellow-input-group" >
-                                <input igxInput name="fullName" [(ngModel)]="deck.name" (ngModelChange)="deckNameChange($event)" name="name" type="text" />
-                                <label igxLabel for="fullName">Deck Name</label>
-                            </igx-input-group>
-                            <button class="btn inverted" igxButton="flat" igxRipple="white" [igxRippleCentered]="true" (click)="saveDeck()">
-                                <igx-icon family="material">save</igx-icon>
-                                Save Deck
-                            </button>
-                        </form>
-                    </div>
-                    <button class="btn-save-deck" igxIconButton="flat">
-                        <igx-icon [style.color]="'white'" >person</igx-icon>
-                    </button>
-                </h1>
-                
+  <div class="navbar-sample">
+    <igx-navbar
+      actionButtonIcon="arrow_back"
+      [isActionButtonVisible]="canGoBack()"
+      (action)="navigateBack()"
+    >
+      <div igxNavbarTitle>
+        <h1 class="igx-navbar__title" id="igx-navbar-title-1">
+          <div [routerLink]="['/deck']" class="logo-content">
+            <img class="pokemon-logo" src="assets/image/logo.png" />
+            <span class="pokemon-font header-title">Your Decks </span>
+          </div>
+
+          <div class="edit-deck-content">
+            <div *ngIf="!isFormPage" class="flex flex-row">
+              <div class="basis-1/4">
+                <div class="button-sample">
+                  <button igxButton="outlined" (click)="addDeck()" igxRipple>
+                    Add new Deck
+                  </button>
+                </div>
+              </div>
             </div>
-            <!-- <button igxIconButton="flat">
+            <button
+              *ngIf="deck && isFormPage"
+              (click)="togglePeek()"
+              class="btn inverted"
+              igxButton="flat"
+              igxRipple="white"
+              [igxRippleCentered]="true"
+            >
+              <igx-icon family="material">density_small</igx-icon>
+              <span>Show Deck</span>
+            </button>
+            <form *ngIf="deck && isFormPage" class="flex">
+              <igx-input-group class="yellow-input-group">
+                <input
+                  igxInput
+                  name="fullName"
+                  [(ngModel)]="search.name"
+                  (ngModelChange)="searchChange($event, 'name')"
+                  name="nameSearch"
+                  type="text"
+                />
+                <label igxLabel for="fullName">Search Card Name</label>
+              </igx-input-group>
+              <igx-input-group class="yellow-input-group">
+                <input
+                  igxInput
+                  name="fullName"
+                  [(ngModel)]="deck.name"
+                  (ngModelChange)="deckNameChange($event)"
+                  name="name"
+                  type="text"
+                />
+                <label igxLabel for="fullName">Deck Name</label>
+              </igx-input-group>
+              <button
+                class="btn inverted"
+                igxButton="flat"
+                igxRipple="white"
+                [igxRippleCentered]="true"
+                (click)="saveDeck()"
+              >
+                <igx-icon family="material">save</igx-icon>
+                Save Deck
+              </button>
+            </form>
+          </div>
+          <button class="btn-save-deck" igxIconButton="flat">
+            <igx-icon [style.color]="'white'">person</igx-icon>
+          </button>
+        </h1>
+      </div>
+      <!-- <button igxIconButton="flat">
                 <igx-icon [style.color]="'white'" >person</igx-icon>
             </button> -->
-        </igx-navbar>
-    </div>
+    </igx-navbar>
+  </div>
 </article>
-<div class="background-content">
-    
-</div>
+<div class="background-content"></div>
 <div class="content">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
 
 <div>
-    <igx-snackbar #snackbar>
-    </igx-snackbar>
+  <igx-snackbar #snackbar> </igx-snackbar>
 </div>
 
-<igx-dialog #modal (closed)="peakDeckAction = false" [isOpen]="peakDeckAction" class="deck-modal" [closeOnOutsideSelect]="true">
-    <igx-dialog-title>
-        <div class="modal-deck-name" >
-            <h4 class="deck-title-modal" >
-                {{deck?.name}} with {{deck?.coreCount}} cores
-            </h4>
-            <button (click)="peakDeckAction = false" igxIconButton="flat">
-                <igx-icon class="close_icon" >close</igx-icon>
-            </button>
-        </div>
-    </igx-dialog-title>
-    <div class="deck-content">
-        <igx-tabs>
-            <igx-tab-item>
-                <igx-tab-header>
-                    <!-- <igx-icon family="material">delete</igx-icon> -->
-                    <span igxTabHeaderLabel>All Cards</span>
-                </igx-tab-header>
-                <igx-tab-content class="pokemon-detail-list-content" >
-                    @for (card of deck?.cards; track card.id) {
-                        <div class="card-content">
-                            <deck-card [card]="card" [delete-option]="isFormPage" (remove-deck)="removeCard(card)" [add-option]="false" ></deck-card>
-                        </div>
-                    }
-                </igx-tab-content>
-            </igx-tab-item>
-            <igx-tab-item>
-                <igx-tab-header>
-                    <!-- <igx-icon family="material">delete</igx-icon> -->
-                    <span igxTabHeaderLabel>{{deck?.pokemonCards?.length}} Pokemons Cards</span>
-                </igx-tab-header>
-                <igx-tab-content class="pokemon-detail-list-content" >
-                    @for (card of deck?.pokemonCards; track card.id) {
-                        <div class="card-content">
-                            <deck-card [card]="card" [delete-option]="isFormPage" (remove-deck)="removeCard(card)" [add-option]="false" ></deck-card>
-                        </div>
-                    }
-                </igx-tab-content>
-            </igx-tab-item>
-            <igx-tab-item>
-                <igx-tab-header>
-                    <!-- <igx-icon family="material">delete</igx-icon> -->
-                    <span igxTabHeaderLabel>{{deck?.trainerCards?.length}} Trainer Cards</span>
-                </igx-tab-header>
-                <igx-tab-content class="pokemon-detail-list-content" >
-                    @for (card of deck?.trainerCards; track card.id) {
-                        <div class="card-content">
-                            <deck-card 
-                                [card]="card" 
-                                [delete-option]="isFormPage"
-                                (remove-deck)="removeCard(card)"
-                                [add-option]="false" >
-                            </deck-card>
-                        </div>
-                    }
-                </igx-tab-content>
-            </igx-tab-item>
-            <igx-tab-item>
-                <igx-tab-header>
-                    <!-- <igx-icon family="material">delete</igx-icon> -->
-                    <span igxTabHeaderLabel>{{deck?.energyCards?.length}} Energy Cards</span>
-                </igx-tab-header>
-                <igx-tab-content class="pokemon-detail-list-content" >
-                    @for (card of deck?.energyCards; track card.id) {
-                        <div class="card-content">
-                            <deck-card [card]="card" [delete-option]="true" (remove-deck)="removeCard(card)" [add-option]="false" ></deck-card>
-                        </div>
-                    }
-                </igx-tab-content>
-            </igx-tab-item>
-        </igx-tabs>
-       
+<igx-dialog
+  #modal
+  (closed)="peakDeckAction = false"
+  [isOpen]="peakDeckAction"
+  class="deck-modal"
+  [closeOnOutsideSelect]="true"
+>
+  <igx-dialog-title>
+    <div class="modal-deck-name">
+      <h4 class="deck-title-modal">
+        {{ deck?.name }} with {{ deck?.coreCount }} cores
+      </h4>
+      <button (click)="peakDeckAction = false" igxIconButton="flat">
+        <igx-icon class="close_icon">close</igx-icon>
+      </button>
     </div>
+  </igx-dialog-title>
+  <div class="deck-content">
+    <igx-tabs>
+      <igx-tab-item>
+        <igx-tab-header>
+          <!-- <igx-icon family="material">delete</igx-icon> -->
+          <span igxTabHeaderLabel>All Cards</span>
+        </igx-tab-header>
+        <igx-tab-content class="pokemon-detail-list-content">
+          @for (card of deck?.cards; track card.id) {
+          <div class="card-content">
+            <deck-card
+              [card]="card"
+              [hide-actions]="!isFormPage"
+              [delete-option]="isFormPage"
+              (remove-deck)="removeCard(card)"
+              [add-option]="false"
+            ></deck-card>
+          </div>
+          }
+        </igx-tab-content>
+      </igx-tab-item>
+      <igx-tab-item>
+        <igx-tab-header>
+          <!-- <igx-icon family="material">delete</igx-icon> -->
+          <span igxTabHeaderLabel
+            >{{ deck?.pokemonCards?.length }} Pokemons Cards</span
+          >
+        </igx-tab-header>
+        <igx-tab-content class="pokemon-detail-list-content">
+          @for (card of deck?.pokemonCards; track card.id) {
+          <div class="card-content">
+            <deck-card
+              [card]="card"
+              [hide-actions]="!isFormPage"
+              [delete-option]="isFormPage"
+              (remove-deck)="removeCard(card)"
+              [add-option]="false"
+            ></deck-card>
+          </div>
+          }
+        </igx-tab-content>
+      </igx-tab-item>
+      <igx-tab-item>
+        <igx-tab-header>
+          <!-- <igx-icon family="material">delete</igx-icon> -->
+          <span igxTabHeaderLabel
+            >{{ deck?.trainerCards?.length }} Trainer Cards</span
+          >
+        </igx-tab-header>
+        <igx-tab-content class="pokemon-detail-list-content">
+          @for (card of deck?.trainerCards; track card.id) {
+          <div class="card-content">
+            <deck-card
+              [card]="card"
+              [hide-actions]="!isFormPage"
+              [delete-option]="isFormPage"
+              (remove-deck)="removeCard(card)"
+              [add-option]="false"
+            >
+            </deck-card>
+          </div>
+          }
+        </igx-tab-content>
+      </igx-tab-item>
+      <igx-tab-item>
+        <igx-tab-header>
+          <!-- <igx-icon family="material">delete</igx-icon> -->
+          <span igxTabHeaderLabel
+            >{{ deck?.energyCards?.length }} Energy Cards</span
+          >
+        </igx-tab-header>
+        <igx-tab-content class="pokemon-detail-list-content">
+          @for (card of deck?.energyCards; track card.id) {
+          <div class="card-content">
+            <deck-card
+              [card]="card"
+              [hide-actions]="!isFormPage"
+              [delete-option]="isFormPage"
+              (remove-deck)="removeCard(card)"
+              [add-option]="false"
+            ></deck-card>
+          </div>
+          }
+        </igx-tab-content>
+      </igx-tab-item>
+    </igx-tabs>
+  </div>
 </igx-dialog>
 <!-- <igx-nav-drawer *ngIf="peakDeckAction" id="navigation" #drawer [isOpen]="peakDeckAction" [pinThreshold]="5000">
     <ng-template igxDrawer>
