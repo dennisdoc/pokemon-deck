@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DeckUser } from '../../shared/model/deck.model';
 import { DeckService } from '../../shared/services/deck.service';
 import { DeckActionsService } from '../../shared/services/deck-actions.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router, Event } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +23,16 @@ export class HomeComponent implements OnInit{
     if(list?.length){
       this.deckList = list.filter(item=>(item.name));
     }
+
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+          // Hide progress spinner or progress bar
+          const list = this.deckService.getDecksSaved();
+          if(list?.length){
+            this.deckList = list.filter(item=>(item.name));
+          }
+      }
+    });
     
   }
 
